@@ -1,0 +1,208 @@
+/**app.wxss**/
+/* 全局样式重置 */
+page {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --glass-bg: rgba(255, 255, 255, 0.15);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --text-primary: rgba(255, 255, 255, 0.9);
+  --text-secondary: rgba(255, 255, 255, 0.7);
+  --text-tertiary: rgba(255, 255, 255, 0.5);
+  
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 全局容器样式 */
+.container {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 玻璃效果卡片基础样式 */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20rpx);
+  border-radius: 30rpx;
+  border: 2rpx solid var(--glass-border);
+  box-shadow: 0 20rpx 60rpx rgba(0, 0, 0, 0.1);
+}
+
+/* 按钮基础样式 */
+.btn {
+  border: none;
+  border-radius: 25rpx;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::after {
+  border: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* 主要按钮 */
+.btn-primary {
+  background: linear-gradient(135deg, #ff6b6b, #ffd93d);
+  color: white;
+  box-shadow: 0 10rpx 30rpx rgba(255, 107, 107, 0.3);
+}
+
+/* 次要按钮 */
+.btn-secondary {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20rpx);
+  border: 2rpx solid var(--glass-border);
+  color: var(--text-primary);
+}
+
+/* 文本样式 */
+.text-primary {
+  color: var(--text-primary);
+}
+
+.text-secondary {
+  color: var(--text-secondary);
+}
+
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+
+/* 标题样式 */
+.title-large {
+  font-size: 48rpx;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.title-medium {
+  font-size: 36rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.title-small {
+  font-size: 32rpx;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* 动画类 */
+.fade-in {
+  animation: fadeIn 0.6s ease-out;
+}
+
+.slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.scale-in {
+  animation: scaleIn 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* 动画定义 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(60rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 通用间距 */
+.mt-xs { margin-top: 10rpx; }
+.mt-sm { margin-top: 20rpx; }
+.mt-md { margin-top: 30rpx; }
+.mt-lg { margin-top: 40rpx; }
+.mt-xl { margin-top: 60rpx; }
+
+.mb-xs { margin-bottom: 10rpx; }
+.mb-sm { margin-bottom: 20rpx; }
+.mb-md { margin-bottom: 30rpx; }
+.mb-lg { margin-bottom: 40rpx; }
+.mb-xl { margin-bottom: 60rpx; }
+
+.p-xs { padding: 10rpx; }
+.p-sm { padding: 20rpx; }
+.p-md { padding: 30rpx; }
+.p-lg { padding: 40rpx; }
+.p-xl { padding: 60rpx; }
+
+/* 弹性布局 */
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 文本对齐 */
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 圆角 */
+.rounded-sm { border-radius: 10rpx; }
+.rounded-md { border-radius: 20rpx; }
+.rounded-lg { border-radius: 30rpx; }
+.rounded-xl { border-radius: 40rpx; }
+.rounded-full { border-radius: 50%; }

@@ -1,0 +1,49 @@
+# 微信小程序相关
+.DS_Store
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 微信开发者工具相关
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 构建产物
+dist/
+build/
+.tmp/
+
+# 私有配置文件
+project.private.config.json
+
+# 云开发相关
+cloudbase/functions/*/node_modules/
+cloudbase/functions/*/.env
+
+# 日志文件
+logs/
+*.log
+
+# 临时文件
+.temp/
+temp/
+
+# 系统文件
+Thumbs.db
+.DS_Store
+
+# 压缩文件
+*.zip
+*.rar
+*.7z
+
+# 索引文件
+.cursorindexingignore
+.specstory/
+
+# ESLint缓存
+.eslintcache 

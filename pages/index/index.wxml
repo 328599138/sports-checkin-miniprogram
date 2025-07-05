@@ -1,0 +1,61 @@
+<!--index.wxml-->
+<navigation-bar title="运动打卡" back="{{false}}" color="white" background="rgba(255,255,255,0.1)"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 主打卡区域 -->
+    <view class="checkin-main">
+      <view class="date-display">
+        <text class="date-text">{{currentDate}}</text>
+        <text class="day-text">{{currentDay}}</text>
+      </view>
+      
+      <!-- 打卡按钮 -->
+      <view class="checkin-button-container">
+        <button class="checkin-button {{isCheckedToday ? 'checked' : ''}}" 
+                bindtap="handleCheckin" 
+                disabled="{{isCheckedToday}}">
+          <view class="button-content">
+            <text class="button-icon">{{isCheckedToday ? '✓' : '💪'}}</text>
+            <text class="button-text">{{isCheckedToday ? '今日已打卡' : '开始运动'}}</text>
+          </view>
+        </button>
+      </view>
+      
+      <!-- 运动类型选择 -->
+      <view class="sport-types" wx:if="{{!isCheckedToday}}">
+        <text class="section-title">选择运动类型</text>
+        <view class="sport-grid">
+          <view class="sport-item {{selectedSport === item.id ? 'selected' : ''}}" 
+                wx:for="{{sportTypes}}" 
+                wx:key="id"
+                bindtap="selectSport"
+                data-sport="{{item.id}}">
+            <text class="sport-emoji">{{item.emoji}}</text>
+            <text class="sport-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 统计卡片 -->
+    <view class="stats-container">
+      <view class="stat-card">
+        <text class="stat-number">{{weeklyCount}}</text>
+        <text class="stat-label">本周打卡</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{totalCount}}</text>
+        <text class="stat-label">总计打卡</text>
+      </view>
+    </view>
+    
+    <!-- 快捷操作 -->
+    <view class="quick-actions">
+      <button class="action-button" bindtap="goToHistory">
+        <text class="action-icon">📊</text>
+        <text class="action-text">打卡历史</text>
+      </button>
+    </view>
+  </view>
+</scroll-view>

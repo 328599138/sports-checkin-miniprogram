@@ -1,0 +1,72 @@
+<!--history.wxml-->
+<navigation-bar title="打卡历史" back="{{true}}" color="white" background="rgba(255,255,255,0.1)"></navigation-bar>
+
+<scroll-view class="scrollarea" scroll-y type="list">
+  <view class="container">
+    <!-- 统计概览 -->
+    <view class="stats-overview">
+      <view class="overview-card">
+        <text class="overview-number">{{totalDays}}</text>
+        <text class="overview-label">总打卡天数</text>
+      </view>
+      <view class="overview-card">
+        <text class="overview-number">{{currentStreak}}</text>
+        <text class="overview-label">连续打卡</text>
+      </view>
+      <view class="overview-card">
+        <text class="overview-number">{{thisMonthCount}}</text>
+        <text class="overview-label">本月打卡</text>
+      </view>
+    </view>
+
+    <!-- 月份选择 -->
+    <view class="month-selector">
+      <button class="month-btn" bindtap="previousMonth">‹</button>
+      <text class="month-text">{{currentMonth}}</text>
+      <button class="month-btn" bindtap="nextMonth">›</button>
+    </view>
+
+    <!-- 打卡日历 -->
+    <view class="calendar-container">
+      <view class="calendar-header">
+        <text class="day-header" wx:for="{{['日','一','二','三','四','五','六']}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="calendar-grid">
+        <view class="calendar-day {{item.isToday ? 'today' : ''}} {{item.hasCheckin ? 'checked' : ''}} {{item.isCurrentMonth ? '' : 'other-month'}}" 
+              wx:for="{{calendarDays}}" 
+              wx:key="date"
+              bindtap="showDayDetail"
+              data-date="{{item.date}}">
+          <text class="day-number">{{item.day}}</text>
+          <view class="day-indicator" wx:if="{{item.hasCheckin}}">
+            <text class="sport-emoji">{{item.sportEmoji}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 打卡记录列表 -->
+    <view class="records-section">
+      <text class="section-title">最近打卡记录</text>
+      <view class="records-list">
+        <view class="record-item" wx:for="{{recentRecords}}" wx:key="id">
+          <view class="record-left">
+            <text class="record-emoji">{{item.sportEmoji}}</text>
+            <view class="record-info">
+              <text class="record-sport">{{item.sportName}}</text>
+              <text class="record-date">{{item.displayDate}}</text>
+            </view>
+          </view>
+          <text class="record-time">{{item.displayTime}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{recentRecords.length === 0}}">
+      <text class="empty-emoji">📝</text>
+      <text class="empty-text">还没有打卡记录</text>
+      <text class="empty-desc">开始你的运动打卡之旅吧！</text>
+    </view>
+  </view>
+</scroll-view> 
