@@ -75,7 +75,7 @@ graph TD
 
 1. **克隆项目**
    ```bash
-   git clone [项目地址]
+   git clone [[项目地址](https://github.com/328599138/sports-checkin-miniprogram)]
    cd 运动打卡
    ```
 
